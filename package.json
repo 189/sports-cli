@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "bin": {
+        "sports-cli": "bin/sports-cli"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -13,5 +16,8 @@
         "co-prompt": "^1.0.0",
         "commander": "^2.9.0"
     },
-    "license": "ISC"
+    "templates" : {
+        "mobile-sample" : "https://github.com/189/sports-mobile-samples.git"
+    },
+    "license": "MIT (http://www.opensource.org/licenses/mit-license.php)"
 }
