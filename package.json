@@ -16,6 +16,10 @@
         "co-prompt": "^1.0.0",
         "commander": "^2.9.0"
     },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/189/sports-cli.git"
+    },
     "templates" : {
         "mobile-sample" : "https://github.com/189/sports-mobile-samples.git"
     },
