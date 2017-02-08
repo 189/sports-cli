@@ -1,27 +1,27 @@
 {
-    "name": "sports-cli",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "bin": {
-        "sports-cli": "bin/sports-cli"
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "kv.wang87@gmail.com",
-    "dependencies": {
-        "chalk": "^1.1.3",
-        "co": "^4.6.0",
-        "co-prompt": "^1.0.0",
-        "commander": "^2.9.0"
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/189/sports-cli.git"
-    },
-    "templates" : {
-        "mobile-sample" : "https://github.com/189/sports-mobile-samples.git"
-    },
-    "license": "MIT (http://www.opensource.org/licenses/mit-license.php)"
+  "name": "sports-cli",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "sports-cli": "bin/sports-cli"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kv.wang87@gmail.com",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/189/sports-cli.git"
+  },
+  "templates": {
+    "mobile-sample": "https://github.com/189/sports-mobile-samples.git"
+  },
+  "license": "MIT (http://www.opensource.org/licenses/mit-license.php)"
 }
