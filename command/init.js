@@ -62,7 +62,7 @@ module.exports = (cmd) => {
      * 获取远端仓库名称
      */
     function getRepo(git) {
-        var repo = /([^\/]+)(?=\.git)/;
+        var repo = /(?:\/)([a-zA-Z0-9_-]+)(?:\.git)?$/;
         var ret = repo.exec(git);
         return ret[0];
     }
