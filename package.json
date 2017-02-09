@@ -21,7 +21,8 @@
     "url": "https://github.com/189/sports-cli.git"
   },
   "templates": {
-    "mobile-sample": "https://github.com/189/sports-mobile-samples.git"
+    "mobile-sample": "https://github.com/189/sports-mobile-samples.git",
+    "pc-sample" : "https://github.com/189/sports-pc-samples"
   },
   "license": "MIT (http://www.opensource.org/licenses/mit-license.php)"
 }

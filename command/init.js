@@ -12,7 +12,7 @@ var cwd = process.cwd();
 
 var errorTip = chalk.red,
     blueTip = chalk.blue;
-    
+
 var exit = process.exit;
 
 module.exports = (cmd) => {
@@ -20,7 +20,7 @@ module.exports = (cmd) => {
     var sample = templates[cmd || "mobile-sample"];
     var repo;
 
-    // 判断远端参考是否存在对应模板
+    // 判断远端仓库是否存在对应模板
     if (!sample) {
         return console.log(chalk.red(`x 没有找到对应${cmd}的模板，请确认当前模板是否存在`));
     }
@@ -29,7 +29,7 @@ module.exports = (cmd) => {
     repo = getRepo(sample);
 
     co(function*() {
-        var dirname = yield prompt('app name: ');
+        var dirname = yield prompt('App name: ');
         var order = `git clone ${sample}`;
         var files = fs.readdirSync(cwd);
 
