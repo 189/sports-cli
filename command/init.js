@@ -6,8 +6,10 @@ var co = require('co');
 var prompt = require('co-prompt');
 var fs = require('fs');
 var path = require('path');
+var bb = require('bluebird');
 
 var config = require('../package.json');
+var utils = require('../libs/utils');
 var cwd = process.cwd();
 
 var errorTip = chalk.red,
@@ -26,7 +28,7 @@ module.exports = (cmd) => {
     }
 
     // 获取模板参考名称
-    repo = getRepo(sample);
+    repo = utils.getRepo(sample);
 
     co(function*() {
         var dirname = yield prompt('App name: ');
@@ -44,26 +46,28 @@ module.exports = (cmd) => {
             }
         })
 
-        console.log(blueTip(`\n >>> 正在生成目录 ${dirname}`));
+        console.log(blueTip(`> 正在生成目录 ${dirname}`));
 
         child.exec(order, (error, stdout, stderr) => {
+        	var absolute = path.join(cwd, dirname);
             if (error) {
                 console.log(errorTip(error));
                 exit(0);
             }
             // 目录重命名
             fs.renameSync(repo, dirname);
-            console.log(chalk.green(`\n √ 目录生成完毕`));
-            exit(0);
+
+            // 获取文件列表 替换文件内容
+        	var fileList = utils.getFileList(absolute);
+        	console.log(blueTip(`> 内容替换`));
+        	fileList.forEach((file)=>{
+        		var data = fs.readFileSync(file, 'utf-8');
+        		var content = data.replace(/\{\s*\{\s*APPNAME\s*\}\s*\}/g, dirname);
+        		fs.writeFileSync(file, content, 'utf-8');
+        	})
+        	
+            console.log(chalk.green(`√ 目录生成完毕`));
+        	exit(0);
         });
     })
-
-    /**
-     * 获取远端仓库名称
-     */
-    function getRepo(git) {
-        var repo = /(?:\/)([a-zA-Z0-9_-]+)(?:\.git)?$/;
-        var ret = repo.exec(git);
-        return ret[0];
-    }
 };
