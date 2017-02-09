@@ -4,7 +4,9 @@
 
 const program = require('commander');
 const config = require('../package.json');
-const makeTemplate = require('../command/init'); 
+
+const init = require('../command/init'); 
+const list = require('../command/list');
 
 // 定义使用方法
 program.usage('<command> <option>');
@@ -20,8 +22,17 @@ program
   		// 若 cli 显式传入参数(如 init directory1) 则 arg 返回当前参数(directory1) 
   		// 否则 arg 返回 command 对象
   		var dir = typeof arg === 'object' ? '' : arg;
-  		makeTemplate(dir);
+  		init(dir);
   	})
+
+program
+	.command('list')
+	.description('列出当前可用的模板')
+	.alias('info')
+	.action(()=>{
+		list();
+	})
+
 
 // 解析命令行参数
 program.parse(process.argv);
